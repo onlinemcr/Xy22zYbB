@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Tracking</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="header">
+        <div class="customer-info">
+            <h1 id="customer-info">Customer Business Name - Customer ID</h1>
+        </div>
+        <div class="header-actions">
+            <button id="donate-button" class="donate-button" onclick="window.location.href='donate.html'">Donate</button>
+            <button class="cancel-button" id="cancel-button">Cancel</button>
+        </div>
+    </div>
+    
+    <div class="tracking-number">
+        <p id="tracking-number">Tracking Number: GB567AXE</p>
+    </div>
+    
+    <div class="progress-container">
+        <div class="progress-step" id="step-0">
+            <div class="oval"></div>
+            <p>Waiting</p>
+        </div>
+        <div class="progress-line"></div>
+        <div class="progress-step" id="step-1">
+            <div class="oval"></div>
+            <p>Preparing</p>
+        </div>
+        <div class="progress-line"></div>
+        <div class="progress-step" id="step-2">
+            <div class="oval"></div>
+            <p>Designing</p>
+        </div>
+        <div class="progress-line"></div>
+        <div class="progress-step" id="step-3">
+            <div class="oval"></div>
+            <p>Finished</p>
+        </div>
+    </div>
+    
+    
+    <div class="paragraphs">
+        <h2 class="paragraph-title">LAST UPDATE</h2>
+        <h3 id="last-update" class="date" style="margin-top: -5px; font-size: small;">01 Sept 2024</h3>
+        <p id="paragraph-0" class="step-paragraph">Your design is now in the waiting list.<br>we’ll start with it as soon as possible</p>
+        <p id="paragraph-1" class="step-paragraph">We’re now preparing your design<br>files and necessary information</p>
+        <p id="paragraph-2" class="step-paragraph">We’re now designing your project.<br>This can take up to 3-4 working days.</p>
+        <p id="paragraph-3" class="step-paragraph">We’re finished with your design.<br>Now saving files and reviewing.</p>
+    </div>
+    
+    <!-- Barcode Button -->
+<button id="barcode-btn">Show Barcode</button>
+
+ <!-- Cancellation Popup Layer -->
+<div id="cancel-popup-layer" class="popup-overlay">
+    <div class="popup-content" style="background-color: white;">
+        <div class="popup-header">
+            <h2 class="htext">Cancellation</h2>
+            <button id="close-cancel-popup" class="close-btn">&times;</button>
+            <div class="canceltxt">
+                <p><strong>Note:</strong> Please read our <a href="https://crxerver.github.io/conditons/" target="_blank">terms and conditions</a> before cancelling.</p>
+                <p>Proceed with cancellation here: <a href="https://wa.me/27817925033" target="_blank">WhatsApp Us</a></p>
+            </div>            
+            <button class="popup-close" id="cancel-close">Close</button>
+        </div>
+    </div>
+</div>
+
+<div id="barcode-popup-layer" class="popup-overlay" style="display:none;">
+    <div class="popup-content">
+        <div class="popup-header">
+            <h2>- BARCODE -</h2>
+            <button id="close-barcode-popup" class="close-btn">&times;</button>
+        </div>
+        <div class="barcode-info">
+            <svg id="barcode-svg" viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg">
+                <!-- Barcode SVG content here -->
+            </svg>
+            <div class="info-text">
+                <p id="banner-info"><strong>Banner Design <br>R420.00</strong></p>
+               
+                <ul id="design-details">
+                    <li>One design concept</li>
+                    <li>Design in JPG and PDF format</li>
+                    <li>Mockup design in JPG format</li>
+                    <li>Rocks .zip file</li>
+                </ul>
+            </div>
+            <img src="images/barcode.svg" alt="Barcode" class="barcode-img">
+        </div>
+    </div>
+</div>
+
+
+<footer>
+    <div id="info-section" class="footer-info" style="background-color: rgb(13, 23, 44); max-width: 100%; padding: 10px;">
+        <p class="thank-you-text">Thank you for being patient, your project is in the hands of professionals.</p>
+        <p class="more-info-text">For more info visit <a href="https://www.96studios.co.za" target="_blank">www.96Studios.co.za</a> or WhatsApp us at <a href="https://wa.me/27817925033" target="_blank">081 792 5033</a></p>
+    </div>
+</footer>
+    <script src="script.js"></script>
+    <script src="popup.js"></script>
+    <script src="update.js"></script>
+    <script>
+        // Show the cancellation popup when the cancel button is clicked
+        document.getElementById('cancel-button').addEventListener('click', function() {
+            document.getElementById('cancel-popup-layer').style.display = 'flex';
+        });
+    
+        // Hide the cancellation popup when the close button is clicked
+        document.getElementById('close-cancel-popup').addEventListener('click', function() {
+            document.getElementById('cancel-popup-layer').style.display = 'none';
+        });
+    
+        document.getElementById('cancel-close').addEventListener('click', function() {
+            document.getElementById('cancel-popup-layer').style.display = 'none';
+        });
+    
+        // Show the barcode popup when the barcode button is clicked
+        document.getElementById('barcode-btn').addEventListener('click', function() {
+            document.getElementById('barcode-popup-layer').style.display = 'flex';
+        });
+    
+        // Hide the barcode popup when the close button is clicked
+        document.getElementById('close-barcode-popup').addEventListener('click', function() {
+            document.getElementById('barcode-popup-layer').style.display = 'none';
+        });
+    
+        // Hide the barcode popup when clicking on the popup overlay
+        document.getElementById('barcode-popup-layer').addEventListener('click', function() {
+            document.getElementById('barcode-popup-layer').style.display = 'none';
+        });
+    
+        // Prevent closing the popup when clicking inside the popup content
+        document.querySelector('#barcode-popup-layer .popup-content').addEventListener('click', function(event) {
+            event.stopPropagation();
+        });
+    </script>
+    
+</body>
+</html>
